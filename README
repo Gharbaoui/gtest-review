@@ -1,0 +1,5 @@
+## learning google test
+### how to use
+	bazel test --test_output=all src:<name_of_test>
+##### for example
+	bazel test --test_output=all src:vector
