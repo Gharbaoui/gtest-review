@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM gitpod/workspace-full
 RUN apt update
 RUN apt install sudo -y
 RUN sudo apt install apt-transport-https curl gnupg -y
