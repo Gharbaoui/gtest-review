@@ -1,6 +1,4 @@
 FROM gitpod/workspace-full
-RUN apt update
-RUN apt install sudo -y
 RUN sudo apt install apt-transport-https curl gnupg -y
 RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
 RUN sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
