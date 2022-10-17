@@ -1,5 +1,6 @@
 FROM ubuntu
-RUN sudo apt update
+RUN apt update
+RUN apt install sudo
 RUN sudo apt install apt-transport-https curl gnupg
 RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
 RUN sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
