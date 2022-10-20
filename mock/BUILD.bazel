@@ -1,0 +1,12 @@
+cc_test(
+    name = "atm-tests",
+    srcs = [
+        "gmockatmtest.cpp",
+        "AtmMachine.hpp",
+        "MockBankServer.hpp",
+        "BankServer.hpp"
+    ],
+    deps = [
+        "@com_google_googletest//:gtest_main"
+    ]
+)
