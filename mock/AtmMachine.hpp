@@ -11,7 +11,7 @@ class   AtmMachine {
             bool res = false;
             bankServer->connect();
             int av_ba = bankServer->getbalance(account_number);
-            if (av_ba > value) {
+            if (av_ba >= value) {
                 res = true;
                 bankServer->debit(account_number, value);
             }
@@ -20,3 +20,10 @@ class   AtmMachine {
         }
 };
 #endif
+
+/*
+    in order to test withdraw
+    connect, getbalance, debit, disconnect called only once
+
+    retunr value of withdraw function should be true
+*/
