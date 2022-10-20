@@ -3,7 +3,7 @@
 
 class BankServer {
     public:
-        virtual ~BankServer();
+        virtual         ~BankServer() = default;
         virtual void    connect() = 0;
         virtual void    disconnect() = 0;
         virtual void    credit(unsigned account_number, int value) = 0;
