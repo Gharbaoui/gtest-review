@@ -18,6 +18,9 @@ class   AtmMachine {
             bankServer->disconnect();
             return res;
         }
+        void    isreal(unsigned account_number) {
+            bankServer->removeAccount(account_number); // this is just for testing
+        }
 };
 #endif
 
