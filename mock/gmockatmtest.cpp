@@ -1,6 +1,14 @@
 #include "./AtmMachine.hpp"
 #include "./MockBankServer.hpp"
 
+class AtmMachineFixture : public ::testing::Test
+{
+    protected:
+        AtmMachineFixture () : atm(&bankServer) {}
+        MockBankServer bankServer;
+        AtmMachine atm;
+};
+
 TEST(AtmMachineGroup, basicTestswithoneaccount)
 {
     unsigned account_number = 6790;
@@ -34,4 +42,16 @@ TEST(AtmMachineGroup, multipleAccounts)
 
     EXPECT_TRUE(atm.withdraw(account1, value));
     EXPECT_TRUE(atm.withdraw(account2, value));
+}
+
+TEST_F(AtmMachineFixture, removeAccountTests)
+{
+    unsigned account1;
+
+    account1 = 90;
+
+    EXPECT_CALL(bankServer, removeAccount(account1)).Times(0);
+
+
+    atm.isreal(account1);
 }
