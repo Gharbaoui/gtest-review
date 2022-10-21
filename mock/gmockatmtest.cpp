@@ -1,7 +1,7 @@
 #include "./AtmMachine.hpp"
 #include "./MockBankServer.hpp"
 
-TEST(AtmMachine, basicTests)
+TEST(AtmMachineGroup, basicTestswithoneaccount)
 {
     unsigned account_number = 6790;
     int value = 1000;
@@ -15,4 +15,23 @@ TEST(AtmMachine, basicTests)
     AtmMachine atm(&bankServer);
     bool res = atm.withdraw(account_number, value);
     EXPECT_TRUE(res);
+}
+
+TEST(AtmMachineGroup, multipleAccounts)
+{
+    MockBankServer bankServer;
+    AtmMachine atm(&bankServer);
+    unsigned account1, account2;
+    int value = 90;
+
+    account1 = 89789;
+    account2 = 123232;
+    
+    EXPECT_CALL(bankServer, connect()).Times(2);
+    EXPECT_CALL(bankServer, getbalance(_)).Times(2).WillRepeatedly(Return(200));
+    EXPECT_CALL(bankServer, debit(_, value)).Times(2);
+    EXPECT_CALL(bankServer, disconnect()).Times(2);
+
+    EXPECT_TRUE(atm.withdraw(account1, value));
+    EXPECT_TRUE(atm.withdraw(account2, value));
 }
