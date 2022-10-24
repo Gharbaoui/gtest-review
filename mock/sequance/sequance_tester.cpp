@@ -5,7 +5,7 @@ class SeqUnIntrestedFixture: public ::testing::Test {
     protected:
         SeqUnIntrestedFixture() : sq(&mockSeq) {}
         NiceMock<MockSequance> mockSeq;
-        SeqUser sq;        
+        SeqUser sq;
 };
 
 TEST_F(SeqUnIntrestedFixture, counterClockWiseRotation)
