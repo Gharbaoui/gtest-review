@@ -68,4 +68,23 @@ TEST_F(AtmMachineFixture, uninterstedFunctionCalls)
     EXPECT_CALL(bankServer, getbalance(_)).Times(1).WillOnce(Return(2000));
 
     bool res = atm.withdraw(account1, value);
+    EXPECT_TRUE(res);  
+}
+
+TEST(AtmMachineGroup, ignoreUnintersted)
+{
+    NiceMock<MockBankServer> bankServer;
+    AtmMachine atm(&bankServer);
+    unsigned account1;
+    int value;
+
+    account1 = 1000;
+    value = 90;
+    // let's say i'm only intersted in getbalance function
+
+    EXPECT_CALL(bankServer, getbalance(_)).Times(1).WillOnce(Return(2000));
+
+    bool res = atm.withdraw(account1, value);
+
+    EXPECT_TRUE(res);  
 }
