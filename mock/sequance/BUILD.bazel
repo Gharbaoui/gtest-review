@@ -1,0 +1,23 @@
+cc_library (
+    name = "order-lib",
+    srcs = [
+        "sequance_user.cpp",
+    ],
+    hdrs = [
+        "sequance_interface.hpp",
+        "sequance_user.hpp",
+    ]
+)
+
+cc_test(
+    name = "order-tests",
+    srcs = [
+        "sequance_tester.cpp",
+        "sequanceMock.hpp",
+        "sequance_interface.hpp",
+    ],
+    deps = [
+        ":order-lib",
+        "@com_google_googletest//:gtest_main"
+    ]
+)
