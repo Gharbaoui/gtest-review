@@ -1,8 +1,24 @@
 #include "./sequanceMock.hpp"
 #include "./sequance_user.hpp"
 
-TEST(SeqTestRotation, simple)
+class SeqUnIntrestedFixture: public ::testing::Test {
+    protected:
+        SeqUnIntrestedFixture() : sq(&mockSeq) {}
+        NiceMock<MockSequance> mockSeq;
+        SeqUser sq;        
+};
+
+TEST_F(SeqUnIntrestedFixture, counterClockWiseRotation)
 {
-    MockSequance mockSeq;
-    SeqUser sq(&mockSeq);
+    Sequence s1;
+    unsigned stps;
+
+    stps = 90;
+    // i want right before left for example
+
+    EXPECT_CALL(mockSeq, walkLeft(stps)).Times(1).InSequence(s1);
+    EXPECT_CALL(mockSeq, walkRight(stps)).Times(1).InSequence(s1);
+
+    sq.counterClockWise(stps);
+
 }

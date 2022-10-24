@@ -3,16 +3,17 @@
 #include "./sequance_interface.hpp"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-
-
+using ::testing::Sequence;
+using ::testing::NiceMock;
 
 class MockSequance: public SequanceInterface
 {
-    MOCK_METHOD(bool, walkUp, (unsigned), (override));
-    MOCK_METHOD(bool, walkDown, (unsigned), (override));
-    MOCK_METHOD(bool, walkRight, (unsigned), (override));
-    MOCK_METHOD(bool, walkLeft, (unsigned), (override));
-    MOCK_METHOD(int, report, (), (const,override));
+    public:
+        MOCK_METHOD(bool, walkUp, (unsigned), (override));
+        MOCK_METHOD(bool, walkDown, (unsigned), (override));
+        MOCK_METHOD(bool, walkRight, (unsigned), (override));
+        MOCK_METHOD(bool, walkLeft, (unsigned), (override));
+        MOCK_METHOD(int, report, (), (const,override));
 };
 
 #endif
