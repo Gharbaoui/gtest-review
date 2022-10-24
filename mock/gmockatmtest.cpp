@@ -55,3 +55,17 @@ TEST_F(AtmMachineFixture, removeAccountTests)
 
     atm.isreal(account1);
 }
+
+TEST_F(AtmMachineFixture, uninterstedFunctionCalls)
+{
+    unsigned account1;
+    int value;
+
+    account1 = 1000;
+    value = 90;
+    // let's say i'm only intersted in getbalance function
+
+    EXPECT_CALL(bankServer, getbalance(_)).Times(1).WillOnce(Return(2000));
+
+    bool res = atm.withdraw(account1, value);
+}
