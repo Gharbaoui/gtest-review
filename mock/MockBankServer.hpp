@@ -7,6 +7,7 @@ using ::testing::AtLeast;
 using ::testing::Return;
 using ::testing::_;
 using ::testing::NiceMock;
+using ::testing::StrictMock;
 
 
 class   MockBankServer : public BankServer {
