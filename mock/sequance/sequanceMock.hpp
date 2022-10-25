@@ -6,7 +6,7 @@
 using ::testing::Sequence;
 using ::testing::NiceMock;
 using ::testing::Expectation;
-
+using ::testing::ExpectationSet;
 
 class MockSequance: public SequanceInterface
 {
