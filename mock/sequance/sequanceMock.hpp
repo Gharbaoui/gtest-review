@@ -4,6 +4,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 using ::testing::Sequence;
+using ::testing::InSequence;
 using ::testing::NiceMock;
 using ::testing::Expectation;
 using ::testing::ExpectationSet;
