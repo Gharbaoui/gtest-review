@@ -33,3 +33,16 @@ TEST_F(SeqUnIntrestedFixture, OtherWayForOrder)
 
     sq.counterClockWise(stps);
 }
+
+TEST_F(SeqUnIntrestedFixture, MultipleOrders)
+{
+    unsigned stps;
+
+    stps = 89;
+    Expectation right = EXPECT_CALL(mockSeq, walkRight(stps)).Times(1);
+    Expectation down = EXPECT_CALL(mockSeq, walkDown(stps)).Times(1);
+    Expectation left = EXPECT_CALL(mockSeq, walkRight(stps)).Times(1);
+   EXPECT_CALL(mockSeq, walkUp(stps)).Times(1).After(right, down, left);
+
+    sq.counterClockWise(stps);
+}
