@@ -22,3 +22,14 @@ TEST_F(SeqUnIntrestedFixture, counterClockWiseRotation)
     sq.counterClockWise(stps);
 
 }
+
+TEST_F(SeqUnIntrestedFixture, OtherWayForOrder)
+{
+    unsigned stps;
+
+    stps = 89;
+    Expectation right = EXPECT_CALL(mockSeq, walkRight(stps)).Times(1);
+    EXPECT_CALL(mockSeq, walkLeft(stps)).Times(1).After(right);
+
+    sq.counterClockWise(stps);
+}

@@ -5,6 +5,8 @@
 #include <gmock/gmock.h>
 using ::testing::Sequence;
 using ::testing::NiceMock;
+using ::testing::Expectation;
+
 
 class MockSequance: public SequanceInterface
 {
