@@ -76,3 +76,24 @@ TEST_F(SeqUnIntrestedFixture, InSequenceScopeForceOrder)
 
     sq.counterClockWise(stps);
 }
+
+TEST_F(SeqUnIntrestedFixture, InSequenceScopeForceOrderPartial)
+{
+
+    unsigned stps;
+
+    stps = 90;
+    // i want right before left for example
+    {
+        InSequence seq;
+        EXPECT_CALL(mockSeq, walkRight(stps)).Times(1);
+        EXPECT_CALL(mockSeq, walkLeft(stps)).Times(1);
+    }
+    {
+        InSequence seq;
+        EXPECT_CALL(mockSeq, walkUp(stps)).Times(1);
+        EXPECT_CALL(mockSeq, walkDown(stps)).Times(1);
+    }
+
+    sq.counterClockWise(stps);
+}
